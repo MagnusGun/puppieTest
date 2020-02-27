@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    puppietest:
+        build:
+            context: .  # context set to repo root
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+            - "8888:8888"
+            - "9600:9600"
+        stdin_open: true
+        tty: true
+        networks:
+            internal:
+                aliases:
+                    - srvint
+            external:
+                aliases:
+                    - srvext
+networks:
+    internal:
+    external:
